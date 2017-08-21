@@ -7,7 +7,8 @@ import {
   TouchableOpacity,
   Image,
   NativeModules,
-  Platform
+  Platform,
+  Dimensions
 } from 'react-native';
 import _ from 'lodash';
 import CameraKitCamera from './../CameraKitCamera';
@@ -19,7 +20,7 @@ const FLASH_MODE_AUTO = 'auto';
 const FLASH_MODE_ON = 'on';
 const FLASH_MODE_OFF = 'off';
 const OVERLAY_DEFAULT_COLOR = '#ffffff77';
-
+var {height, width} = Dimensions.get('window');
 export default class CameraScreenBase extends Component {
 
   static propTypes = {
@@ -98,7 +99,7 @@ export default class CameraScreenBase extends Component {
     return !this.isCaptureRetakeMode() &&
       <TouchableOpacity style={{ paddingHorizontal: 15 }} onPress={() => this.onSetFlash(FLASH_MODE_AUTO)}>
         <Image
-          style={{ flex: 1, justifyContent: 'center' }}
+          style={{ width: 28, height: 28, justifyContent: 'center', resizeMode: 'contain' }}
           source={this.state.flashData.image}
           resizeMode={Image.resizeMode.contain}
         />
@@ -109,7 +110,7 @@ export default class CameraScreenBase extends Component {
     return (this.props.cameraFlipImage && !this.isCaptureRetakeMode()) &&
       <TouchableOpacity style={{ paddingHorizontal: 15 }} onPress={this.onSwitchCameraPressed}>
         <Image
-          style={{ flex: 1, justifyContent: 'center' }}
+          style={{ width: 30, height: 30, justifyContent: 'center' , resizeMode: 'contain' }}
           source={this.props.cameraFlipImage}
           resizeMode={Image.resizeMode.contain}
         />
@@ -136,10 +137,11 @@ export default class CameraScreenBase extends Component {
           /> :
           <CameraKitCamera
             ref={(cam) => this.camera = cam}
-            style={{flex: 1, justifyContent: 'flex-end'}}
+            style={{height: width, width: width , justifyContent: 'flex-end'}}
             cameraOptions={this.state.cameraOptions}
           />
         }
+        {this.renderTopButtons()}
       </View>
     );
   }
@@ -302,26 +304,35 @@ const styles = StyleSheet.create(_.merge(styleObject, {
     fontSize: 18
   },
   topButtons: {
-    flex: 1,
+    position: 'absolute',
+    bottom: 15,
+    left: 0,
+    right: 0,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    backgroundColor: 'rgba(0,0,0,0)',
     paddingTop: 8,
     paddingBottom: 0
   },
   cameraContainer: {
-    flex: 10,
-    flexDirection: 'column'
+    width: width,
+    height: width,
+    flexDirection: 'column',
+    backgroundColor: 'black'
   },
   captureButtonContainer: {
-    flex: 1,
+    marginTop: 0,
+    height: 80,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'green'
   },
   captureButton: {
     flex: 1,
     alignSelf: 'center',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: 'blue'
   },
   captureNumber: {
     justifyContent: 'center',
@@ -330,8 +341,10 @@ const styles = StyleSheet.create(_.merge(styleObject, {
   },
   bottomButton: {
     flex: 1,
+    width: width,
     flexDirection: 'row',
     alignItems: 'center',
+    backgroundColor: 'green',
     padding: 10
   },
   bottomContainerGap: {

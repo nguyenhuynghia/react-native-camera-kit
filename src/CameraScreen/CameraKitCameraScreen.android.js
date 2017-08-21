@@ -14,7 +14,6 @@ export default class CameraScreen extends CameraScreenBase {
     return (
       <View style={{ flex: 1, backgroundColor: 'transparent' }} {...this.props}>
         {this.renderCamera()}
-        {this.renderTopButtons()}
         {this.renderGap()}
         {this.renderBottomButtons()}
       </View>
