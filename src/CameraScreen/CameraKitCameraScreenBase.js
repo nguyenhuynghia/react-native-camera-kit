@@ -342,7 +342,6 @@ const styles = StyleSheet.create(_.merge(styleObject, {
     width: width,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'green',
     padding: 10
   },
   bottomContainerGap: {
