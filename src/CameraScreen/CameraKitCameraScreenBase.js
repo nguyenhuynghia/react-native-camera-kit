@@ -325,14 +325,12 @@ const styles = StyleSheet.create(_.merge(styleObject, {
     height: 80,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'green'
   },
   captureButton: {
     flex: 1,
     alignSelf: 'center',
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'blue'
+    justifyContent: 'center'
   },
   captureNumber: {
     justifyContent: 'center',

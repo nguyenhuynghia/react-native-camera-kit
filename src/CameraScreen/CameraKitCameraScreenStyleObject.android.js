@@ -7,7 +7,7 @@ export default styleObject = {
     top: 0,
     left: 0,
     width: width,
-    height: 100
+    height: width
   },
   // bottomButtons: {
   //     flex: 2,
