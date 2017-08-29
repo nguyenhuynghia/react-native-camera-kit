@@ -312,7 +312,8 @@ const styles = StyleSheet.create(_.merge(styleObject, {
     paddingBottom: 0
   },
   cameraContainer: {
-    flex: 10,
+    width: width,
+    height: width,
     flexDirection: 'column',
     backgroundColor: 'black'
   },
