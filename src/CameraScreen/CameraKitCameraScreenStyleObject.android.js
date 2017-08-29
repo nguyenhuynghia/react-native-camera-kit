@@ -7,7 +7,7 @@ export default styleObject = {
     top: 0,
     left: 0,
     width: width,
-    height: width
+    height: height
   },
   // bottomButtons: {
   //     flex: 2,
@@ -22,7 +22,8 @@ export default styleObject = {
     flex: 2,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 14
+    padding: 14,
+    backgroundColor: '#F7F7F7'
   },
   gap: {
     flex: 10,

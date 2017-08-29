@@ -3,7 +3,8 @@ export default styleObject = {
     flex: 2,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 14
+    padding: 14,
+    backgroundColor: '#F7F7F7'
   },
 //   bottomContainerGap: {
 //     flex: 1,

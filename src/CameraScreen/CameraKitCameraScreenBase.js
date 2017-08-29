@@ -168,9 +168,6 @@ export default class CameraScreenBase extends Component {
             source={this.props.captureButtonImage}
             resizeMode={'contain'}
           >
-            <Text style={styles.captureNumber}>
-              {this.numberOfImagesTaken()}
-            </Text>
           </Image>
         </TouchableOpacity>
       </View >
@@ -315,8 +312,7 @@ const styles = StyleSheet.create(_.merge(styleObject, {
     paddingBottom: 0
   },
   cameraContainer: {
-    width: width,
-    height: width,
+    flex: 10,
     flexDirection: 'column',
     backgroundColor: 'black'
   },
