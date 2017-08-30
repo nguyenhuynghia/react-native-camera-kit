@@ -22,6 +22,7 @@ typedef void (^AlbumsBlock)(NSDictionary *albums);
 
 @property (nonatomic, strong) PHFetchResult *allPhotos;
 @property (nonatomic, strong) PHFetchResult *smartAlbums;
+@property (nonatomic, strong) PHFetchResult *allAlbums;
 @property (nonatomic, strong) PHFetchResult *topLevelUserCollections;
 @property (nonatomic, strong) PHFetchOptions *fetchOptions;
 
@@ -51,6 +52,13 @@ RCT_EXPORT_MODULE();
         _allPhotos = [PHAsset fetchAssetsWithOptions:self.fetchOptions];
     }
     return _allPhotos;
+}
+
+-(PHFetchResult *)allAlbums {
+    if (!_allAlbums) {
+        _allAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
+    }
+    return _allAlbums;
 }
 
 
@@ -160,7 +168,7 @@ RCT_EXPORT_METHOD(getAlbumsWithThumbnails:(RCTPromiseResolveBlock)resolve
     
     __block NSMutableArray *albumsArray = [[NSMutableArray alloc] init];
     
-    [self extractCollectionsDetails:self.topLevelUserCollections
+    [self extractCollectionsDetails:self.allAlbums
                 imageRequestOptions:imageRequestOptions
                       thumbnailSize:retinaSquare
                               block:^(NSDictionary *albums) {
